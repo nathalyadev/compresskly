@@ -1,0 +1,54 @@
+using CompressKly.Api.Extensions;
+using CompressKly.Api.Middlewares;
+using CompressKly.Infrastructure;
+using Microsoft.AspNetCore.Http.Features;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var maxFileSizeMb = builder.Configuration.GetValue("Upload:MaxFileSizeMb", 500);
+var maxFileSizeBytes = maxFileSizeMb * 1024L * 1024L;
+
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = maxFileSizeBytes;
+});
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = maxFileSizeBytes;
+});
+
+builder.Services.AddCompressKlyServices(builder.Configuration);
+
+var corsOrigins = builder.Configuration.GetSection("Cors:Origins").Get<string[]>()
+    ?? ["http://localhost:3000"];
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Front", policy =>
+        policy.WithOrigins(corsOrigins)
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
+var app = builder.Build();
+
+await app.Services.InitializeDatabaseAsync();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseCors("Front");
+app.MapControllers();
+
+app.Run();
+
+public partial class Program;

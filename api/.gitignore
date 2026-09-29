@@ -1,0 +1,37 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+*.DotSettings.user
+
+## Test / coverage
+TestResults/
+coverage/
+*.trx
+*.coverage
+*.coveragexml
+
+## Storage (keep folders, ignore files)
+storage/original/*
+!storage/original/.gitkeep
+storage/compressed/*
+!storage/compressed/.gitkeep
+
+## Local DB
+*.db
+*.db-shm
+*.db-wal
+
+## Secrets / env
+appsettings.*.local.json
+.env
+*.pem
+
+## OS / IDE
+.DS_Store
+Thumbs.db
+.idea/

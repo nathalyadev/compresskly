@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CompressKly — monorepo
 
-## Getting Started
+## Estrutura
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```text
+front/          # Next.js + React + TypeScript + Tailwind
+api/            # ASP.NET Core (C#) — Clean Architecture
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Front (`front/`)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+UI de upload, preview, progresso e download. Consome a API C#.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd front
+cp .env.example .env.local
+npm install
+npm run dev
+```
 
-## Learn More
+Abra [http://localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
+Variável importante: `NEXT_PUBLIC_API_URL` (padrão `http://localhost:5080`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API (`api/`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Backend **CompressKly** em .NET 10, com camadas Domain / Application / Infrastructure / Api.
 
-## Deploy on Vercel
+### Pré-requisitos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- .NET SDK 10+
+- FFmpeg e FFprobe no PATH (ou configure `Ffmpeg:FfmpegPath` / `Ffmpeg:FfprobePath` no `appsettings.json`)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Executar
+
+```bash
+cd api
+dotnet run --project src/CompressKly.Api
+```
+
+Swagger: [http://localhost:5080/swagger](http://localhost:5080/swagger)
+
+### Endpoints
+
+| Método | Rota | Descrição |
+|---|---|---|
+| `POST` | `/api/videos/upload` | Upload do MP4 |
+| `POST` | `/api/videos/{id}/compress` | Inicia compressão (`{ "quality": "balanced" }`) |
+| `GET` | `/api/videos/{id}/status` | Status / progresso |
+| `GET` | `/api/videos/{id}/download` | Download do arquivo comprimido |
+
+Qualidades: `high`, `balanced`, `max`.
+
+### Testes
+
+```bash
+cd api
+dotnet test
+```
+
+## Fluxo
+
+1. Front envia o vídeo para `POST /api/videos/upload`
+2. Front inicia `POST /api/videos/{id}/compress`
+3. Front faz polling em `GET /api/videos/{id}/status`
+4. Ao concluir, permite preview/download via `GET /api/videos/{id}/download`
+
+## Stack
+
+- **Front:** Next.js, React, TypeScript, Tailwind
+- **API:** ASP.NET Core, EF Core (SQLite), FluentValidation, FFmpeg
