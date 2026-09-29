@@ -29,7 +29,7 @@ Backend **CompressKly** em .NET 10, com camadas Domain / Application / Infrastru
 ### Pré-requisitos
 
 - .NET SDK 10+
-- FFmpeg e FFprobe no PATH (ou configure `Ffmpeg:FfmpegPath` / `Ffmpeg:FfprobePath` no `appsettings.json`)
+- FFmpeg e FFprobe instalados no sistema e disponíveis no PATH (ou configure `Ffmpeg:FfmpegPath` / `Ffmpeg:FfprobePath` no `appsettings.json`)
 
 ### Executar
 
@@ -68,4 +68,10 @@ dotnet test
 ## Stack
 
 - **Front:** Next.js, React, TypeScript, Tailwind
-- **API:** ASP.NET Core, EF Core (SQLite), FluentValidation, FFmpeg
+- **API:** ASP.NET Core, EF Core (SQLite), FluentValidation, FFmpeg (externo)
+
+## Licença
+
+Este repositório é licenciado sob a [MIT License](LICENSE).
+
+**FFmpeg** não faz parte deste repositório e **não é redistribuído** sob a licença MIT do CompressKly. A API invoca o FFmpeg/FFprobe instalados no ambiente como processos externos. Codec stacks (por exemplo builds com `libx264`) têm licenças próprias (frequentemente GPL); quem empacota ou redistribui binários do FFmpeg deve cumprir os termos dessas licenças separadamente.

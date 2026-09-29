@@ -2,6 +2,8 @@
 
 API ASP.NET Core para upload e compressão de vídeos MP4 com FFmpeg.
 
+FFmpeg/FFprobe são dependências **externas** do sistema (não incluídas neste repositório). O CompressKly apenas os invoca como processos; binários e codecs (ex.: `libx264`) seguem as licenças próprias do FFmpeg e não são redistribuídos sob a MIT deste projeto.
+
 ## Arquitetura
 
 ```text
