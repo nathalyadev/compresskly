@@ -4,6 +4,7 @@ import { QUALITY_OPTIONS } from "@/lib/constants";
 import { estimateCompressedSize, formatBytes, formatPercent } from "@/lib/utils";
 import type { CompressionQuality } from "@/types/video";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
 
 interface QualitySelectorProps {
@@ -27,10 +28,16 @@ export function QualitySelector({
 
   return (
     <fieldset className="w-full" disabled={disabled}>
-      <legend className="mb-3 text-sm font-medium text-[#202124]">
+      <legend className="mb-3 text-sm font-medium text-foreground">
         Qualidade da compressão
       </legend>
-      <div className="grid gap-2" role="radiogroup" aria-label="Qualidade">
+      <RadioGroup
+        value={value}
+        onValueChange={(next) => onChange(next as CompressionQuality)}
+        className="grid gap-2"
+        disabled={disabled}
+        aria-label="Qualidade"
+      >
         {QUALITY_OPTIONS.map((option) => {
           const checked = option.value === value;
           return (
@@ -39,26 +46,26 @@ export function QualitySelector({
               className={cn(
                 "flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 transition-colors",
                 checked
-                  ? "border-[#1a73e8] bg-[#e8f0fe]"
-                  : "border-[#dadce0] bg-white hover:bg-[#f8f9fa]",
+                  ? "border-primary bg-accent"
+                  : "border-border bg-card hover:bg-muted/60",
                 disabled && "cursor-not-allowed opacity-60",
               )}
             >
-              <input
-                type="radio"
-                name="quality"
+              <RadioGroupItem
                 value={option.value}
-                checked={checked}
-                disabled={disabled}
-                onChange={() => onChange(option.value)}
-                className="mt-1 h-4 w-4 accent-[#1a73e8]"
-                aria-describedby={`quality-${option.value}-desc`}
+                id={`quality-${option.value}`}
+                className="mt-1"
               />
               <span className="min-w-0">
-                <Label className="cursor-pointer">{option.label}</Label>
+                <Label
+                  htmlFor={`quality-${option.value}`}
+                  className="cursor-pointer"
+                >
+                  {option.label}
+                </Label>
                 <span
                   id={`quality-${option.value}-desc`}
-                  className="mt-0.5 block text-sm text-[#5f6368]"
+                  className="mt-0.5 block text-sm text-muted-foreground"
                 >
                   {option.description}
                 </span>
@@ -66,10 +73,10 @@ export function QualitySelector({
             </label>
           );
         })}
-      </div>
-      <p className="mt-3 text-sm text-[#5f6368]" aria-live="polite">
+      </RadioGroup>
+      <p className="mt-3 text-sm text-muted-foreground" aria-live="polite">
         Estimativa aproximada:{" "}
-        <span className="font-medium text-[#202124]">
+        <span className="font-medium text-foreground">
           {formatBytes(estimate)}
         </span>{" "}
         ({formatPercent(reduction)} de redução)

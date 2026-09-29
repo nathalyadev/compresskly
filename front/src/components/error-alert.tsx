@@ -1,5 +1,14 @@
 "use client";
 
+import { AlertCircle } from "lucide-react";
+import {
+  Alert,
+  AlertAction,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+
 interface ErrorAlertProps {
   message: string;
   onDismiss?: () => void;
@@ -7,21 +16,23 @@ interface ErrorAlertProps {
 
 export function ErrorAlert({ message, onDismiss }: ErrorAlertProps) {
   return (
-    <div
-      role="alert"
-      className="flex w-full items-start justify-between gap-3 rounded-xl border border-[#fce8e6] bg-[#fce8e6] px-4 py-3 text-sm text-[#c5221f]"
-    >
-      <p>{message}</p>
+    <Alert variant="destructive">
+      <AlertCircle />
+      <AlertTitle>Não foi possível continuar</AlertTitle>
+      <AlertDescription>{message}</AlertDescription>
       {onDismiss ? (
-        <button
-          type="button"
-          onClick={onDismiss}
-          className="shrink-0 rounded-md px-2 py-0.5 font-medium text-[#c5221f] hover:bg-[#fad2cf] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d93025]"
-          aria-label="Fechar mensagem de erro"
-        >
-          Fechar
-        </button>
+        <AlertAction>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={onDismiss}
+            aria-label="Fechar mensagem de erro"
+          >
+            Fechar
+          </Button>
+        </AlertAction>
       ) : null}
-    </div>
+    </Alert>
   );
 }

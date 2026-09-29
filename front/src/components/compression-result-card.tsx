@@ -1,7 +1,17 @@
 "use client";
 
 import { Download } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { formatBytes, formatPercent } from "@/lib/utils";
 import type { CompressionResult } from "@/types/video";
 
@@ -21,15 +31,18 @@ export function CompressionResultCard({
   downloading = false,
 }: CompressionResultCardProps) {
   return (
-    <section className="w-full overflow-hidden rounded-2xl border border-[#e8eaed] bg-white">
-      <div className="border-b border-[#e8eaed] px-4 py-4 sm:px-6">
-        <h2 className="text-lg font-medium text-[#202124]">Vídeo comprimido</h2>
-        <p className="mt-1 text-sm text-[#5f6368]">
+    <Card className="overflow-hidden py-0">
+      <CardHeader className="border-b pt-4">
+        <div className="flex items-center gap-2">
+          <CardTitle className="text-lg">Vídeo comprimido</CardTitle>
+          <Badge variant="secondary">Pronto</Badge>
+        </div>
+        <CardDescription>
           Seu arquivo está pronto para download.
-        </p>
-      </div>
+        </CardDescription>
+      </CardHeader>
 
-      <div className="grid grid-cols-2 gap-4 px-4 py-5 sm:grid-cols-4 sm:px-6">
+      <CardContent className="grid grid-cols-2 gap-4 py-5 sm:grid-cols-4">
         <Stat label="Original" value={formatBytes(result.originalSize)} />
         <Stat label="Comprimido" value={formatBytes(result.compressedSize)} />
         <Stat label="Economia" value={formatBytes(result.savedBytes)} />
@@ -37,9 +50,11 @@ export function CompressionResultCard({
           label="Redução"
           value={formatPercent(result.reductionPercent)}
         />
-      </div>
+      </CardContent>
 
-      <div className="bg-[#202124]">
+      <Separator />
+
+      <div className="bg-foreground">
         <video
           className="aspect-video w-full bg-black object-contain"
           controls
@@ -52,9 +67,10 @@ export function CompressionResultCard({
         </video>
       </div>
 
-      <div className="flex flex-col gap-3 px-4 py-5 sm:flex-row sm:px-6">
+      <CardFooter className="flex flex-col gap-3 sm:flex-row">
         <Button
           type="button"
+          size="lg"
           className="w-full sm:flex-1"
           onClick={onDownload}
           disabled={downloading}
@@ -66,21 +82,24 @@ export function CompressionResultCard({
         <Button
           type="button"
           variant="outline"
+          size="lg"
           className="w-full sm:flex-1"
           onClick={onReset}
         >
           Comprimir outro vídeo
         </Button>
-      </div>
-    </section>
+      </CardFooter>
+    </Card>
   );
 }
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-xs uppercase tracking-wide text-[#5f6368]">{label}</p>
-      <p className="mt-1 text-lg font-semibold tabular-nums text-[#202124]">
+      <p className="text-xs uppercase tracking-wide text-muted-foreground">
+        {label}
+      </p>
+      <p className="mt-1 text-lg font-semibold tabular-nums text-foreground">
         {value}
       </p>
     </div>

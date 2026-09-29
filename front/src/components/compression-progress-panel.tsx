@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import type { CompressionProgress } from "@/types/video";
 
@@ -13,23 +20,24 @@ export function CompressionProgressPanel({
   const value = Math.max(0, Math.min(100, progress.progress));
 
   return (
-    <section
-      className="w-full rounded-2xl border border-[#e8eaed] bg-white px-4 py-6 sm:px-6"
-      aria-live="polite"
-      aria-busy="true"
-    >
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <h2 className="text-base font-medium text-[#202124]">
-          {progress.message}
-        </h2>
-        <p className="text-sm font-semibold tabular-nums text-[#1a73e8]">
-          {value}%
-        </p>
-      </div>
-      <Progress value={value} aria-label={`Progresso da compressão: ${value}%`} />
-      <p className="mt-3 text-sm text-[#5f6368]">
-        Isso pode levar alguns minutos, dependendo do tamanho do vídeo.
-      </p>
-    </section>
+    <Card aria-live="polite" aria-busy="true">
+      <CardHeader className="border-b">
+        <div className="flex items-center justify-between gap-3">
+          <CardTitle>{progress.message}</CardTitle>
+          <p className="text-sm font-semibold tabular-nums text-primary">
+            {value}%
+          </p>
+        </div>
+        <CardDescription>
+          Isso pode levar alguns minutos, dependendo do tamanho do vídeo.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Progress
+          value={value}
+          aria-label={`Progresso da compressão: ${value}%`}
+        />
+      </CardContent>
+    </Card>
   );
 }

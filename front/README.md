@@ -1,6 +1,6 @@
 # CompressKly Front
 
-Interface web do CompressKly (Next.js + React + TypeScript + Tailwind).
+Interface web do CompressKly (Next.js + React + TypeScript + Tailwind + shadcn/ui).
 
 ## Desenvolvimento
 
@@ -11,6 +11,16 @@ npm run dev
 ```
 
 Configure `NEXT_PUBLIC_API_URL` apontando para a API (padrão `http://localhost:5080`).
+
+## shadcn/ui
+
+O projeto usa shadcn/ui (estilo `radix-nova`) com Tailwind v4.
+
+Componentes em `src/components/ui/`:
+
+```bash
+npx shadcn@latest add [component]
+```
 
 ## Scripts
 

@@ -233,6 +233,7 @@ export function VideoCompressor() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button
               type="button"
+              size="lg"
               className="w-full sm:flex-1"
               onClick={handleCompress}
               disabled={isBusy}
@@ -242,6 +243,7 @@ export function VideoCompressor() {
             <Button
               type="button"
               variant="outline"
+              size="lg"
               className="w-full sm:flex-1"
               onClick={resetAll}
               disabled={isBusy}

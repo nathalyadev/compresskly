@@ -47,10 +47,10 @@ export function VideoUploadZone({
       aria-disabled={disabled}
       aria-label="Área para enviar vídeo MP4. Arraste um arquivo ou pressione Enter para selecionar."
       className={cn(
-        "flex w-full cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-4 py-12 text-center transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[#1a73e8] focus-visible:ring-offset-2 sm:py-16",
+        "flex w-full cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-4 py-12 text-center transition-colors outline-none focus-visible:ring-3 focus-visible:ring-ring/50 sm:py-16",
         isDragging
-          ? "border-[#1a73e8] bg-[#e8f0fe]"
-          : "border-[#dadce0] bg-[#f8f9fa] hover:border-[#1a73e8]/hover:bg-[#f1f3f4]",
+          ? "border-primary bg-accent"
+          : "border-border bg-muted/40 hover:border-primary/60 hover:bg-muted/70",
         disabled && "pointer-events-none opacity-60",
       )}
       onKeyDown={(event) => {
@@ -86,18 +86,19 @@ export function VideoUploadZone({
         handleFile(event.dataTransfer.files?.[0]);
       }}
     >
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
-        <Upload className="h-5 w-5 text-[#1a73e8]" aria-hidden />
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-card shadow-sm ring-1 ring-border">
+        <Upload className="h-5 w-5 text-primary" aria-hidden />
       </div>
-      <p className="text-base font-medium text-[#202124]">
+      <p className="text-base font-medium text-foreground">
         Arraste seu vídeo MP4 aqui
       </p>
-      <p className="mt-1 max-w-sm text-sm text-[#5f6368]">
+      <p className="mt-1 max-w-sm text-sm text-muted-foreground">
         Ou selecione um arquivo do seu dispositivo. Apenas vídeos .mp4 são
         aceitos.
       </p>
       <Button
         type="button"
+        size="lg"
         className="mt-6"
         disabled={disabled}
         onClick={(event) => {
