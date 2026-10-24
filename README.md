@@ -72,6 +72,6 @@ dotnet test
 
 ## Licença
 
-Este repositório é licenciado sob a [MIT License](LICENSE).
+O uso deste código é permitido desde que a autora original, **Nathálya**, seja creditada. Os termos completos estão em [LICENSE](LICENSE).
 
-**FFmpeg** não faz parte deste repositório e **não é redistribuído** sob a licença MIT do CompressKly. A API invoca o FFmpeg/FFprobe instalados no ambiente como processos externos. Codec stacks (por exemplo builds com `libx264`) têm licenças próprias (frequentemente GPL); quem empacota ou redistribui binários do FFmpeg deve cumprir os termos dessas licenças separadamente.
+**FFmpeg** não faz parte deste repositório e **não é redistribuído** sob a licença do CompressKly. A API invoca o FFmpeg/FFprobe instalados no ambiente como processos externos. Codec stacks (por exemplo builds com `libx264`) têm licenças próprias (frequentemente GPL); quem empacota ou redistribui binários do FFmpeg deve cumprir os termos dessas licenças separadamente.

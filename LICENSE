@@ -1,21 +1,28 @@
-MIT License
+Licença do CompressKly — uso permitido com crédito obrigatório à autora
 
 Copyright (c) 2026 Nathálya
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+É concedida permissão, gratuitamente, a qualquer pessoa que obtenha uma cópia
+deste software e dos arquivos de documentação associados (o "Software"), para
+lidar com o Software sem restrição, incluindo, sem limitação, os direitos de
+usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender
+cópias do Software, e de permitir que as pessoas a quem o Software seja
+fornecido façam o mesmo, sujeitas às seguintes condições:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. O aviso de copyright acima e este texto de licença devem constar em todas
+   as cópias ou partes substanciais do Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2. Quem utilizar o Software, no todo ou em parte — inclusive ao copiar,
+   modificar, incorporar em outro projeto ou distribuir o Software ou uma obra
+   derivada — deve informar que a autora original é Nathálya. O crédito deve
+   nomear Nathálya como autora original do CompressKly e aparecer de forma
+   visível na documentação, na interface (por exemplo, em "Sobre" ou créditos)
+   ou no material que acompanhe o uso ou a distribuição.
+
+O SOFTWARE É FORNECIDO "NO ESTADO EM QUE SE ENCONTRA", SEM GARANTIA DE QUALQUER
+TIPO, EXPRESSA OU IMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO ÀS GARANTIAS DE
+COMERCIALIZAÇÃO, ADEQUAÇÃO A UM PROPÓSITO ESPECÍFICO E NÃO VIOLAÇÃO. EM NENHUMA
+HIPÓTESE A AUTORA OU OS DETENTORES DOS DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR
+QUALQUER RECLAMAÇÃO, DANO OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO,
+ATO ILÍCITO OU DE OUTRA FORMA, DECORRENTE DE, ORIGINADA DE OU EM CONEXÃO COM O
+SOFTWARE OU COM O USO OU OUTRAS OPERAÇÕES REALIZADAS COM O SOFTWARE.
