@@ -12,15 +12,17 @@ using ValidationException = CompressKly.Core.Exceptions.ValidationException;
 namespace CompressKly.Api.Controllers
 {
 
+    [ApiController]
+    [Route("api/v1/videos")]
     /// <summary>
     /// Upload, compressão, acompanhamento e download de vídeos MP4.
     /// </summary>
     public class VideosController(
-        UploadVideoHandler uploadHandler,
-        CompressVideoHandler compressHandler,
-        GetCompressionStatusHandler statusHandler,
-        DownloadVideoHandler downloadHandler,
-        INotifier notifier) : MainController(notifier)
+         UploadVideoHandler uploadHandler,
+         CompressVideoHandler compressHandler,
+         GetCompressionStatusHandler statusHandler,
+         DownloadVideoHandler downloadHandler,
+         INotifier notifier) : MainController(notifier)
     {
 
         /// <summary>
