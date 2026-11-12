@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\CompressKly.Domain\CompressKly.Domain.csproj" />
+    <ProjectReference Include="..\CompressKly.Core\CompressKly.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

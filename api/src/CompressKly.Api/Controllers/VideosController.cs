@@ -5,9 +5,9 @@ using CompressKly.Application.Videos.Compress;
 using CompressKly.Application.Videos.Download;
 using CompressKly.Application.Videos.GetStatus;
 using CompressKly.Application.Videos.Upload;
-using CompressKly.Domain.Enums;
+using CompressKly.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
-using ValidationException = CompressKly.Domain.Exceptions.ValidationException;
+using ValidationException = CompressKly.Core.Exceptions.ValidationException;
 
 namespace CompressKly.Api.Controllers;
 
@@ -15,9 +15,12 @@ namespace CompressKly.Api.Controllers;
 /// Upload, compressão, acompanhamento e download de vídeos MP4.
 /// </summary>
 [ApiController]
-[Route("api/v1/videos")]
 [Produces("application/json")]
 [Tags("Videos")]
+[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
+[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status422UnprocessableEntity)]
+[ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status500InternalServerError)]
 public sealed class VideosController : ControllerBase
 {
     private readonly UploadVideoHandler _uploadHandler;
@@ -50,7 +53,6 @@ public sealed class VideosController : ControllerBase
     [HttpPost("upload")]
     [Consumes("multipart/form-data")]
     [ProducesResponseType(typeof(UploadVideoResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
     [RequestSizeLimit(524_288_000)]
     [RequestFormLimits(MultipartBodyLengthLimit = 524_288_000)]
     public async Task<IActionResult> Upload(IFormFile video, CancellationToken cancellationToken)
@@ -87,9 +89,6 @@ public sealed class VideosController : ControllerBase
     /// <response code="422">Falha ao processar o vídeo.</response>
     [HttpPost("{id:guid}/compress")]
     [ProducesResponseType(typeof(CompressVideoResponse), StatusCodes.Status202Accepted)]
-    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
-    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status422UnprocessableEntity)]
     public async Task<IActionResult> Compress(
         Guid id,
         [FromBody] CompressVideoRequest request,
@@ -120,7 +119,6 @@ public sealed class VideosController : ControllerBase
     /// <response code="404">Vídeo não encontrado.</response>
     [HttpGet("{id:guid}/status")]
     [ProducesResponseType(typeof(CompressionStatusResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetStatus(Guid id, CancellationToken cancellationToken)
     {
         var result = await _statusHandler.HandleAsync(
@@ -143,7 +141,6 @@ public sealed class VideosController : ControllerBase
     /// <response code="404">Vídeo ou arquivo comprimido não encontrado.</response>
     [HttpGet("{id:guid}/download")]
     [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Download(
         Guid id,
         [FromQuery] bool preview = false,

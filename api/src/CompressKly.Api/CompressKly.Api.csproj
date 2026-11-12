@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CompressKly.Application\CompressKly.Application.csproj" />
+    <ProjectReference Include="..\CompressKly.Core\CompressKly.Core.csproj" />
     <ProjectReference Include="..\CompressKly.Infrastructure\CompressKly.Infrastructure.csproj" />
   </ItemGroup>
 

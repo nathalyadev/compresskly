@@ -1,4 +1,4 @@
-using CompressKly.Domain.Entities;
+using CompressKly.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CompressKly.Infrastructure.Data;

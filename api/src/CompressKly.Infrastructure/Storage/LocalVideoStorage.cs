@@ -1,5 +1,5 @@
 using CompressKly.Application.Interfaces;
-using CompressKly.Domain.Exceptions;
+using CompressKly.Core.Exceptions;
 using Microsoft.Extensions.Options;
 
 namespace CompressKly.Infrastructure.Storage;

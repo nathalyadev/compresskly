@@ -1,8 +1,8 @@
 using CompressKly.Application.DTOs;
 using CompressKly.Application.Interfaces;
-using CompressKly.Domain.Entities;
+using CompressKly.Core.Entities;
 using FluentValidation;
-using DomainValidationException = CompressKly.Domain.Exceptions.ValidationException;
+using CoreValidationException = CompressKly.Core.Exceptions.ValidationException;
 
 namespace CompressKly.Application.Videos.Upload;
 
@@ -33,7 +33,7 @@ public sealed class UploadVideoHandler
                 .GroupBy(e => e.PropertyName)
                 .ToDictionary(g => g.Key, g => g.Select(e => e.ErrorMessage).ToArray());
 
-            throw new DomainValidationException(
+            throw new CoreValidationException(
                 validation.Errors.First().ErrorMessage,
                 errors);
         }

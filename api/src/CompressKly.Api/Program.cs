@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddCompressKlyControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCompressKlyOpenApi();
 
@@ -23,6 +23,7 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 builder.Services.AddCompressKlyServices(builder.Configuration);
+builder.Services.AddTransient<GlobalExceptionMiddleware>();
 
 var corsOrigins = builder.Configuration.GetSection("Cors:Origins").Get<string[]>()
     ?? ["http://localhost:3000"];
@@ -44,7 +45,7 @@ if (app.Environment.IsDevelopment())
     app.UseCompressKlyOpenApi();
 }
 
-app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseCors("Front");
 app.MapControllers();
 

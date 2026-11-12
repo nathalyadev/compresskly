@@ -1,4 +1,5 @@
 using System.Reflection;
+using CompressKly.Api.OpenApi;
 using Microsoft.OpenApi;
 
 namespace CompressKly.Api.Extensions;
@@ -17,6 +18,15 @@ public static class SwaggerExtensions
                     Version = "v1",
                     Description = """
                         API REST para upload, compressão e download de vídeos MP4.
+
+                        ## Erros
+
+                        Respostas com status 4xx ou 5xx em `application/json` seguem o schema **ApiErrorResponse**:
+
+                        - `message` — texto principal do erro
+                        - `errors` — opcional; objeto campo → lista de mensagens (validação)
+
+                        O middleware global converte exceções de domínio, FluentValidation e falhas inesperadas nesse formato.
                         """,
                     Contact = new OpenApiContact
                     {
@@ -31,6 +41,8 @@ public static class SwaggerExtensions
             IncludeXmlComments(options, typeof(CompressKly.Application.DTOs.UploadVideoResponse).Assembly);
 
             options.CustomSchemaIds(type => type.FullName?.Replace('+', '.') ?? type.Name);
+            options.SchemaFilter<ApiErrorResponseSchemaFilter>();
+            options.OperationFilter<ApiErrorResponsesOperationFilter>();
         });
 
         return services;

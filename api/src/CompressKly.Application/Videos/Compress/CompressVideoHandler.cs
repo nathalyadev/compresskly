@@ -1,7 +1,7 @@
 using CompressKly.Application.DTOs;
 using CompressKly.Application.Interfaces;
-using CompressKly.Domain.Enums;
-using CompressKly.Domain.Exceptions;
+using CompressKly.Core.Enums;
+using CompressKly.Core.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 

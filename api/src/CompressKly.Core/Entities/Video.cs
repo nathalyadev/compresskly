@@ -1,7 +1,7 @@
-using CompressKly.Domain.Enums;
-using CompressKly.Domain.Exceptions;
+using CompressKly.Core.Enums;
+using CompressKly.Core.Exceptions;
 
-namespace CompressKly.Domain.Entities;
+namespace CompressKly.Core.Entities;
 
 public sealed class Video
 {

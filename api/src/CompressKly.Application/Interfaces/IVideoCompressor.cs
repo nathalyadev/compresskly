@@ -1,4 +1,4 @@
-using CompressKly.Domain.Enums;
+using CompressKly.Core.Enums;
 
 namespace CompressKly.Application.Interfaces;
 

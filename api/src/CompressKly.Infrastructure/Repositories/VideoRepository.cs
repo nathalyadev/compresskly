@@ -1,5 +1,5 @@
 using CompressKly.Application.Interfaces;
-using CompressKly.Domain.Entities;
+using CompressKly.Core.Entities;
 using CompressKly.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 

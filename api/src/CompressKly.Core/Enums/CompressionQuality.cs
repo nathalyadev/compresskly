@@ -1,4 +1,4 @@
-namespace CompressKly.Domain.Enums;
+namespace CompressKly.Core.Enums;
 
 public enum CompressionQuality
 {

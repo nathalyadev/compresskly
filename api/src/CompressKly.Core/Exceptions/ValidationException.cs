@@ -1,6 +1,6 @@
-namespace CompressKly.Domain.Exceptions;
+namespace CompressKly.Core.Exceptions;
 
-public sealed class ValidationException : DomainException
+public sealed class ValidationException : CoreException
 {
     public IReadOnlyDictionary<string, string[]> Errors { get; }
 
@@ -8,7 +8,7 @@ public sealed class ValidationException : DomainException
         : base(message)
     {
         Errors = new Dictionary<string, string[]>();
-    }
+    }   
 
     public ValidationException(string message, IDictionary<string, string[]> errors)
         : base(message)
