@@ -49,7 +49,7 @@ As principais tecnologias utilizadas neste projeto são:
 - **TypeScript** — tipos de vídeo e contratos com a API
 - **Tailwind CSS 4** — estilização utilitária
 - **shadcn/ui** (estilo `radix-nova`) — Button, Card, Progress, Alert, etc.
-- **lucide-react** — ícones
+- **react-icons** (Feather / MIT) — ícones
 
 ## Estrutura do projeto
 

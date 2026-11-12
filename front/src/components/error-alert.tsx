@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle } from "lucide-react";
+import { FiAlertCircle } from "react-icons/fi";
 
 import {
   Alert,
@@ -18,7 +18,7 @@ interface ErrorAlertProps {
 export function ErrorAlert({ message, onDismiss }: ErrorAlertProps) {
   return (
     <Alert variant="destructive">
-      <AlertCircle />
+      <FiAlertCircle />
       <AlertTitle>Não foi possível continuar</AlertTitle>
       <AlertDescription>{message}</AlertDescription>
       {onDismiss ? (

@@ -1,6 +1,6 @@
 "use client";
 
-import { Download } from "lucide-react";
+import { FiDownload } from "react-icons/fi";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -77,7 +77,7 @@ export function CompressionResultCard({
           disabled={downloading}
           aria-label="Baixar vídeo comprimido"
         >
-          <Download aria-hidden />
+          <FiDownload aria-hidden />
           {downloading ? "Baixando..." : "Baixar vídeo"}
         </Button>
         <Button

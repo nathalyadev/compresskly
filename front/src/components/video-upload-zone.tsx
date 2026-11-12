@@ -1,7 +1,7 @@
 "use client";
 
-import { Upload } from "lucide-react";
 import { useCallback, useId, useRef, useState } from "react";
+import { FiUpload } from "react-icons/fi";
 
 import { Button } from "@/components/ui/button";
 import { ACCEPTED_EXTENSION, ERROR_MESSAGES } from "@/lib/constants";
@@ -88,7 +88,7 @@ export function VideoUploadZone({
       }}
     >
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-card shadow-sm ring-1 ring-border">
-        <Upload className="h-5 w-5 text-primary" aria-hidden />
+        <FiUpload className="h-5 w-5 text-primary" aria-hidden />
       </div>
       <p className="text-base font-medium text-foreground">
         Arraste seu vídeo MP4 aqui
