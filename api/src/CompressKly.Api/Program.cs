@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddCompressKlyOpenApi();
 
 var maxFileSizeMb = builder.Configuration.GetValue("Upload:MaxFileSizeMb", 500);
 var maxFileSizeBytes = maxFileSizeMb * 1024L * 1024L;
@@ -41,8 +41,7 @@ await app.Services.InitializeDatabaseAsync();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseCompressKlyOpenApi();
 }
 
 app.UseMiddleware<ExceptionMiddleware>();
