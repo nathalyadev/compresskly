@@ -16,18 +16,7 @@ public static class SwaggerExtensions
                 {
                     Title = "CompressKly API",
                     Version = "v1",
-                    Description = """
-                        API REST para upload, compressão e download de vídeos MP4.
-
-                        ## Erros
-
-                        Respostas com status 4xx ou 5xx em `application/json` seguem o schema **ApiErrorResponse**:
-
-                        - `message` — texto principal do erro
-                        - `errors` — opcional; objeto campo → lista de mensagens (validação)
-
-                        O middleware global converte exceções de domínio, FluentValidation e falhas inesperadas nesse formato.
-                        """,
+                    Description = "API REST para upload, compressão e download de vídeos MP4.",
                     Contact = new OpenApiContact
                     {
                         Name = "CompressKly"

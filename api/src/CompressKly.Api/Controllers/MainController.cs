@@ -2,28 +2,28 @@ using Microsoft.AspNetCore.Mvc;
 using CompressKly.Core.Models.ViewModels;
 using CompressKly.Core.Interfaces.Notifications;
 
-namespace CompressKly.Api.Controllers;
-
-[ApiController]
-[Route("api/v1/[controller]")]
-[ProducesResponseType(typeof(DefaultResponseViewModel), 500)]
-public class MainController(INotifier notifier) : ControllerBase
+namespace CompressKly.Api.Controllers
 {
-    protected readonly INotifier _notifier = notifier;
-
-    protected ActionResult PersonalizedResponse(ActionResult actionResult)
+    [ApiController]
+    [Route("api/v1/[controller]")]
+    public class MainController(INotifier notifier) : ControllerBase
     {
-        if (IsValidOperation())
-            return actionResult;
+        protected readonly INotifier _notifier = notifier;
 
-        var notifications = _notifier.GetNotifications();
-
-        return new JsonResult(new DefaultResponseViewModel(notifications.Select(n => n.Message)))
+        protected ActionResult PersonalizedResponse(ActionResult actionResult)
         {
-            StatusCode = (int)notifications[0].StatusCode,
-        };
+            if (IsValidOperation())
+                return actionResult;
+
+            var notifications = _notifier.GetNotifications();
+
+            return new JsonResult(new DefaultResponseViewModel(notifications.Select(n => n.Message)))
+            {
+                StatusCode = (int)notifications[0].StatusCode,
+            };
+        }
+
+        private bool IsValidOperation() => !_notifier.HasAnyNotification();
+
     }
-
-    private bool IsValidOperation() => !_notifier.HasAnyNotification();
-
 }
