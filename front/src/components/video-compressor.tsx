@@ -1,11 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
+
 import { CompressionProgressPanel } from "@/components/compression-progress-panel";
 import { CompressionResultCard } from "@/components/compression-result-card";
 import { ErrorAlert } from "@/components/error-alert";
 import { QualitySelector } from "@/components/quality-selector";
+import { Button } from "@/components/ui/button";
 import { VideoPreviewCard } from "@/components/video-preview-card";
 import { VideoUploadZone } from "@/components/video-upload-zone";
 import { useVideoDuration } from "@/hooks/use-video-duration";

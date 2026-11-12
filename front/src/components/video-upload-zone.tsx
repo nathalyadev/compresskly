@@ -1,11 +1,12 @@
 "use client";
 
-import { useCallback, useId, useRef, useState } from "react";
 import { Upload } from "lucide-react";
+import { useCallback, useId, useRef, useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { ACCEPTED_EXTENSION, ERROR_MESSAGES } from "@/lib/constants";
-import { validateClientFile } from "@/lib/validation";
 import { cn } from "@/lib/utils";
+import { validateClientFile } from "@/lib/validation";
 
 interface VideoUploadZoneProps {
   disabled?: boolean;
