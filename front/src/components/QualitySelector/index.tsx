@@ -1,10 +1,10 @@
 "use client";
 
+import { Label, RadioGroup, RadioGroupItem } from "@/components/ui/components";
 import { QUALITY_OPTIONS } from "@/lib/constants";
 import { estimateCompressedSize, formatBytes, formatPercent } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import type { CompressionQuality } from "@/types/video";
-import { Label, RadioGroup, RadioGroupItem } from "@/components/ui/components";
 
 interface QualitySelectorProps {
   value: CompressionQuality;

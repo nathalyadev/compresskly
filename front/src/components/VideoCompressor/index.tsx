@@ -6,6 +6,7 @@ import { CompressionProgressPanel } from "@/components/CompressionProgressPanel"
 import { CompressionResultCard } from "@/components/CompressionResultCard";
 import { ErrorAlert } from "@/components/ErrorAlert";
 import { QualitySelector } from "@/components/QualitySelector";
+import { Button } from "@/components/ui/components";
 import { VideoPreviewCard } from "@/components/VideoPreviewCard";
 import { VideoUploadZone } from "@/components/VideoUploadZone";
 import { useVideoDuration } from "@/hooks/use-video-duration";
@@ -21,7 +22,6 @@ import type {
   CompressionResult,
   VideoFileInfo,
 } from "@/types/video";
-import { Button } from "@/components/ui/components";
 
 export function VideoCompressor() {
   const [appState, setAppState] = useState<AppState>("idle");

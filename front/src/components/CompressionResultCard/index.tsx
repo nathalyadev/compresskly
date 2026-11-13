@@ -2,8 +2,6 @@
 
 import { FiDownload } from "react-icons/fi";
 
-import { formatBytes, formatPercent } from "@/lib/utils";
-import type { CompressionResult } from "@/types/video";
 import {
   Badge,
   Button,
@@ -15,6 +13,8 @@ import {
   CardTitle,
   Separator,
 } from "@/components/ui/components";
+import { formatBytes, formatPercent } from "@/lib/utils";
+import type { CompressionResult } from "@/types/video";
 
 interface CompressionResultCardProps {
   result: CompressionResult;
