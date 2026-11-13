@@ -1,14 +1,14 @@
 "use client";
 
+import type { CompressionProgress } from "@/types/video";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import type { CompressionProgress } from "@/types/video";
+  Progress,
+} from "@/components/ui/components";
 
 interface CompressionProgressPanelProps {
   progress: CompressionProgress;

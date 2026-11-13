@@ -3,10 +3,10 @@
 import { useCallback, useId, useRef, useState } from "react";
 import { FiUpload } from "react-icons/fi";
 
-import { Button } from "@/components/ui/button";
 import { ACCEPTED_EXTENSION, ERROR_MESSAGES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { validateClientFile } from "@/lib/validation";
+import { Button } from "@/components/ui/components";
 
 interface VideoUploadZoneProps {
   disabled?: boolean;

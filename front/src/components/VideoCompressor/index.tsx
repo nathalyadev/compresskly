@@ -2,13 +2,12 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { CompressionProgressPanel } from "@/components/compression-progress-panel";
-import { CompressionResultCard } from "@/components/compression-result-card";
-import { ErrorAlert } from "@/components/error-alert";
-import { QualitySelector } from "@/components/quality-selector";
-import { Button } from "@/components/ui/button";
-import { VideoPreviewCard } from "@/components/video-preview-card";
-import { VideoUploadZone } from "@/components/video-upload-zone";
+import { CompressionProgressPanel } from "@/components/CompressionProgressPanel";
+import { CompressionResultCard } from "@/components/CompressionResultCard";
+import { ErrorAlert } from "@/components/ErrorAlert";
+import { QualitySelector } from "@/components/QualitySelector";
+import { VideoPreviewCard } from "@/components/VideoPreviewCard";
+import { VideoUploadZone } from "@/components/VideoUploadZone";
 import { useVideoDuration } from "@/hooks/use-video-duration";
 import {
   compressVideoRequest,
@@ -22,6 +21,7 @@ import type {
   CompressionResult,
   VideoFileInfo,
 } from "@/types/video";
+import { Button } from "@/components/ui/components";
 
 export function VideoCompressor() {
   const [appState, setAppState] = useState<AppState>("idle");
